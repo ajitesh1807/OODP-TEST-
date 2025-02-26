@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Doctor {
+    string name, specialization, doj;
+    int id, patients;
+    double fee;
+
+public:
+    Doctor(string n, int i, string s, int p, double f, string d)
+        : name(n), id(i), specialization(s), patients(p), fee(f), doj(d) {}
+
+    void display() {
+        double earnings = patients * fee;
+        if (earnings > 50000)
+            cout << "Doctor: " << name << ", ID: " << id << ", Specialization: " << specialization
+                 << ", Earnings: " << earnings << endl;
+    }
+};
+
+int main() {
+    vector<Doctor> doctors = {
+        {"Dr. John Doe", 106, "Cardiology", 150, 400, "01-05-2015"},
+        {"Dr. Jane Smith", 102, "Orthopedics", 120, 350, "12-03-2017"},
+        {"Dr. Mark Lee", 103, "Neurology", 180, 250, "15-08-2018"},
+        {"Dr. Emma Wilson", 104, "Pediatrics", 200, 200, "20-07-2016"}
+    };
+
+    for (auto& doc : doctors) doc.display();
+    return 0;
+}
