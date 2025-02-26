@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+
+class Car {
+    std::string brand, model, variant;
+    int year;
+    double price;
+
+public:
+    Car(std::string b, std::string m, int y, double p, std::string v = "")
+        : brand(b), model(m), year(y), price(p), variant(v) {}
+
+    void showCarDetails() const {
+        std::cout << brand << " " << model << (variant.empty() ? "" : " (" + variant + ")") 
+                  << " | Year: " << year << " | Price: $" << price << "\n";
+    }
+
+    bool isOlderThan(const Car& other) const { return year < other.year; }
+};
+
+int main() {
+    Car car1("Toyota", "Corolla", 2015, 15000, "Sedan"), car2("Honda", "Civic", 2018, 18000);
+    car1.showCarDetails(); car2.showCarDetails();
+    std::cout << (car1.isOlderThan(car2) ? "Car1 is older\n" : "Car2 is older\n");
+}
